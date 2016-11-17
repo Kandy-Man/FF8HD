@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 864e403c3bbdc4f8ea86973f6df05554
+timeCreated: 1443860523
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - defaultMixerGroup: {fileID: 24337576, guid: d355fefeb5b65dd45ad8ca1137f7746c,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
