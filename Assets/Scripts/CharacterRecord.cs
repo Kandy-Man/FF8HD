@@ -17,7 +17,7 @@ public class CharacterRecord
     [SerializeField]int _spiritBonus;
     [SerializeField]int _speedBonus;
     [SerializeField]int _luckBonus;
-    //[SerializeField] Weapon _equippedWeapon;
+    [SerializeField] Weapon _equippedWeapon;
     //[SerializeField] LimitBreak[] _limitBreaks;
     [SerializeField]int _numberOfKills;
     [SerializeField]int _currentHP;
