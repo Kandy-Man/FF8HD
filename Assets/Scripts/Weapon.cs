@@ -9,6 +9,7 @@ public class Weapon
     [SerializeField]int _hitRate;
     [SerializeField]int _cost;
     [SerializeField]Item[] _itemsRequired;
+    [SerializeField]GameObject _model;
 
     public string Name
     {
@@ -33,6 +34,10 @@ public class Weapon
     public Item[] ItemsRequired
     {
         get { return _itemsRequired; }
+    }
+    public GameObject Model
+    {
+        get { return _model; }
     }
 
     /*

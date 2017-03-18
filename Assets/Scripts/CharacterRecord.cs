@@ -5,12 +5,14 @@ public class CharacterRecord
 {
     [SerializeField]string _name;
     [SerializeField]int _level;
-    [SerializeField]int _strength;
-    [SerializeField]int _vitality;
-    [SerializeField]int _magic;
-    [SerializeField]int _spirit;
-    [SerializeField]int _speed;
-    [SerializeField]int _luck;
+    [SerializeField]AnimationCurve _baseHP; //before junction alterations
+    [SerializeField]AnimationCurve _strength;
+    [SerializeField]AnimationCurve _vitality;
+    [SerializeField]AnimationCurve _magic;
+    [SerializeField]AnimationCurve _spirit;
+    [SerializeField]AnimationCurve _speed;
+    [SerializeField]AnimationCurve _luck;
+    [SerializeField]int _hpBonus;
     [SerializeField]int _strengthBonus;
     [SerializeField]int _vitalityBonus;
     [SerializeField]int _magicBonus;
@@ -21,7 +23,6 @@ public class CharacterRecord
     //[SerializeField] LimitBreak[] _limitBreaks;
     [SerializeField]int _numberOfKills;
     [SerializeField]int _currentHP;
-    [SerializeField]int _baseHP; //before junction alterations
     [SerializeField]int _maxHP;  //after junction alterations
     [SerializeField]int _currentEXP;
     [SerializeField]int _expToNextLevel;
@@ -34,29 +35,36 @@ public class CharacterRecord
     {
         get { return _level; }
     }
+    public int BaseHP
+    {
+        get { return Mathf.FloorToInt(_baseHP.Evaluate(_level)); }
+    }
     public int Strength
     {
-        get { return _strength; }
     }
     public int Vitality
     {
-        get { return _vitality; }
+        get { return Mathf.FloorToInt(_vitalityBonus + _vitality.Evaluate(_level)); }
     }
     public int Magic
     {
-        get { return _magic; }
+        get { return Mathf.FloorToInt(_magicBonus + _magic.Evaluate(_level)); }
     }
     public int Spirit
     {
-        get { return _spirit; }
+        get { return Mathf.FloorToInt(_spiritBonus + _spirit.Evaluate(_level)); }
     }
     public int Speed
     {
-        get { return _speed; }
+        get { return Mathf.FloorToInt(_speedBonus + _speed.Evaluate(_level)); }
     }
     public int Luck
     {
-        get { return _luck; }
+        get { return Mathf.FloorToInt(_luckBonus + _luck.Evaluate(_level)); }
+    }
+    public int HpBonus
+    {
+        get { return _hpBonus; }
     }
     public int StrengthBonus
     {
@@ -97,10 +105,6 @@ public class CharacterRecord
     public int CurrentHP
     {
         get { return _currentHP; }
-    }
-    public int BaseHP
-    {
-        get { return _baseHP; }
     }
     public int MaxHP
     {
