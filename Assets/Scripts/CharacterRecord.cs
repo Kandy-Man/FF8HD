@@ -41,6 +41,7 @@ public class CharacterRecord
     }
     public int Strength
     {
+        get { return Mathf.FloorToInt(_strengthBonus + _strength.Evaluate(_level) + _equippedWeapon.Strength); }
     }
     public int Vitality
     {
