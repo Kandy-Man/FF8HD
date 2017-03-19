@@ -10,6 +10,9 @@ public class Weapon
     [SerializeField]int _cost;
     [SerializeField]Item[] _itemsRequired;
     [SerializeField]GameObject _model;
+    [SerializeField]EquipMask _equipableCharacter;
+    [SerializeField]GameObject _hitParticleSystem;
+    [SerializeField]GameObject _hitCriticalParticleSystem;
 
     public string Name
     {
@@ -39,22 +42,16 @@ public class Weapon
     {
         get { return _model; }
     }
-
-    /*
-        each weapon contains: 
-            equip mask (equipable on 'specific character'),
-            attack texture graphics (could be particle system or something in unity, will need one for critical too),
-            restriction mask (
-                Appears in Item Menu. Does not appear in Battle Menu (Not usable at all);
-                Appears in Battle Menu & Item Menu (Not usable at all);
-                Appears in Item Menu. Does not appear in Battle Menu (Usable in Battle Menu);
-                Appears in Battle Menu & Item Menu (Usable in Battle Menu);
-                Appears in Item Menu. Does not appear in Battle Menu (Usable in Item Menu);
-                Appears in Battle Menu & Item Menu (Usable in Item Menu);
-                Appears in Item Menu. Does not appear in Battle Menu (Usable in Item Menu & Battle Menu);
-                Appears in Battle Menu & Item Menu (Usable in Item Menu & Battle Menu);
-                Appears in Item Menu. Does not appear in Battle Menu (Usable in Battle Menu);
-                Appears in Battle Menu & Item Menu (Usable in Battle Menu);
-            ) 
-    */
+    public EquipMask EquipableCharacter
+    {
+        get { return _equipableCharacter; }
+    }
+    public GameObject HitParticleSystem
+    {
+        get { return _hitParticleSystem; }
+    }
+    public GameObject HitCriticalParticleSystem
+    {
+        get { return _hitCriticalParticleSystem; }
+    }
 }

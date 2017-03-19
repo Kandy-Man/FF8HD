@@ -5,6 +5,7 @@ public class CharacterRecord
 {
     [SerializeField]string _name;
     [SerializeField]int _level;
+    [SerializeField]EquipMask _characterEquipMask;
     [SerializeField]AnimationCurve _baseHP; //before junction alterations
     [SerializeField]AnimationCurve _strength;
     [SerializeField]AnimationCurve _vitality;
@@ -34,6 +35,10 @@ public class CharacterRecord
     public int Level
     {
         get { return _level; }
+    }
+    public EquipMask CharacterEquipMask
+    {
+        get { return _characterEquipMask; }
     }
     public int BaseHP
     {

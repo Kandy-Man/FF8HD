@@ -8,6 +8,10 @@ public class Item
     [SerializeField]int _cost;
     [SerializeField]ItemType _type;
     [SerializeField]ItemAttackTarget _attackTarget;
+    [SerializeField]ItemRestrictionMask _restrictionMask;
+    [SerializeField]ItemRestoreType _restoreType;
+    [SerializeField]Element _elementType;
+    [SerializeField]StatusEffect[] _statusEffects;
 
     public string Name
     {
@@ -29,20 +33,25 @@ public class Item
     {
         get { return _attackTarget; }
     }
+    public ItemRestrictionMask RestrictionMask
+    {
+        get { return _restrictionMask; }
+    }
+    public ItemRestoreType RestoreType
+    {
+        get { return _restoreType; }
+    }
+    public Element ElementType
+    {
+        get { return _elementType; }
+    }
+    public StatusEffect[] StatusEffects
+    {
+        get { return _statusEffects; }
+    }
 
     /*
      * each item contains: 
-     *      restriction mask(
-     *          Appears in Item Menu. Does not appear in Battle Menu (Not usable at all);
-     *          Appears in Battle Menu & Item Menu (Not usable at all);
-     *          Appears in Item Menu. Does not appear in Battle Menu (Usable in Battle Menu);
-     *          Appears in Battle Menu & Item Menu (Usable in Battle Menu);
-     *          Appears in Item Menu. Does not appear in Battle Menu (Usable in Item Menu);
-     *          Appears in Battle Menu & Item Menu (Usable in Item Menu);
-     *          Appears in Item Menu. Does not appear in Battle Menu (Usable in Item Menu & Battle Menu);
-     *          Appears in Battle Menu & Item Menu (Usable in Item Menu & Battle Menu);
-     *          Appears in Item Menu. Does not appear in Battle Menu (Usable in Battle Menu);
-     *          Appears in Battle Menu & Item Menu (Usable in Battle Menu)),
      *      
      *      restore apply(
      *          damage/restore by value,
@@ -50,9 +59,6 @@ public class Item
      *          causes damage,
      *          affects stats,
      *          none),
-     *          
-     *      status effects,
-     *      element
     */
 }
 
@@ -61,4 +67,19 @@ public enum ItemAttackTarget
     ONE_TARGET,
     MULTIPLE_TARGETS,
     PARTY_ONLY
+}
+
+public enum ItemRestrictionMask
+{
+    UNUSABLE,
+    USABLE_IN_ITEM_MENU,
+    USABLE_IN_BATTLE_MENU,
+    USABLE_IN_ITEM_AND_BATTLE_MENU
+}
+
+public enum ItemRestoreType
+{
+    NONE,
+    HP,
+    AILMENT
 }
